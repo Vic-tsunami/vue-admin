@@ -1,51 +1,51 @@
 <template>
 	<section>
-			<!--工具条-->
-			<el-col :span="24" class="toolbar" style="padding-bottom: 0px;" size="mini">
-				<el-form :inline="true" :model="filters">
-					<el-form-item>
-						<el-input v-model="filters.message" placeholder="输入消息体关键字进行查询"></el-input>
-					</el-form-item>
-					<el-form-item>
-						<el-button type="primary" v-on:click="handleSearch">快速检索</el-button>
-					</el-form-item>
-				</el-form>
-			</el-col>
+		<!--工具条-->
+		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;" size="mini">
+			<el-form :inline="true" :model="filters">
+				<el-form-item>
+					<el-input v-model="filters.message" placeholder="输入消息体关键字进行查询"></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-button type="primary" v-on:click="handleSearch">快速检索</el-button>
+				</el-form-item>
+			</el-form>
+		</el-col>
 
-			<!--列表-->
-			<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;" height="670">
-				<el-table-column type="selection" width="55">
-				</el-table-column>
-				<el-table-column type="index" width="60">
-				</el-table-column>
-				<el-table-column prop="id" label="id" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="region" label="区县" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="data_time" label="产生时间" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="send_time" label="发送时间" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="service_type" label="业务类型" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="send_count" label="发送次数" width="200" sortable>
-				</el-table-column>
-				<el-table-column prop="message" label="消息"  sortable v-if="false">
-				</el-table-column>
-				<el-table-column label="操作" width="300">
-					<template scope="scope">
-						<el-button size="small" @click="handleEdit(scope.$index, scope.row)">查看消息</el-button>
-						<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">发送</el-button>
-					</template>
-				</el-table-column>
-			</el-table>
+		<!--列表-->
+		<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;">
+			<el-table-column type="selection" width="55">
+			</el-table-column>
+			<el-table-column type="index" width="60">
+			</el-table-column>
+			<el-table-column prop="id" label="id" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="region" label="区县" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="data_time" label="产生时间" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="send_time" label="发送时间" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="service_type" label="业务类型" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="send_count" label="发送次数" width="200" sortable>
+			</el-table-column>
+			<el-table-column prop="message" label="消息"  sortable v-if="false">
+			</el-table-column>
+			<el-table-column label="操作" width="300">
+				<template scope="scope">
+					<el-button size="small" @click="handleEdit(scope.$index, scope.row)">查看消息</el-button>
+					<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">发送</el-button>
+				</template>
+			</el-table-column>
+		</el-table>
 
-			<!--工具条-->
-			<el-col :span="24" class="toolbar">
-				<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量发送</el-button>
-				<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="10" :total="total" style="float:right;">
-				</el-pagination>
-			</el-col>
+		<!--工具条-->
+		<el-col :span="24" class="toolbar">
+			<el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量发送</el-button>
+			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+			</el-pagination>
+		</el-col>
 	</section>
 </template>
 
