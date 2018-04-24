@@ -34,7 +34,7 @@ let routes = [
         name: '监控管理',
         iconCls: 'el-icon-menu',//图标样式class
         children: [
-            { path: '/index', component: index, name: '首页123' },
+            { path: '/index', component: index, name: '首页' },
             // { path: '/table', component: Table, name: 'table' },
             // { path: '/form', component: Form, name: 'form' },
             // { path: '/user', component: user, name: '列表' },
